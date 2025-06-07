@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "editor.foldingImportsByDefault": true,
+  "editor.foldingStrategy": "auto",
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "C_Cpp.clang_format_fallbackStyle": "Google"
+}
