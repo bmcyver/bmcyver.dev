@@ -149,7 +149,7 @@ const WakatimeGraph = () => {
         accessibilityLayer
         data={languages}
         layout="vertical"
-        // margin={{ left: -10, right: 20, top: 5, bottom: 5 }}
+        margin={{ left: -5, right: 20, top: 5, bottom: 5 }}
         width={500}
         height={300}
         barSize={18}

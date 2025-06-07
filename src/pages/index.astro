@@ -37,7 +37,7 @@ if (latestPost) {
   <section
     class="mx-auto grid max-w-[375px] grid-cols-1 gap-4 px-4 [grid-template-areas:'a'_'b'_'c'_'d'_'e'_'f'] *:rounded-3xl *:bg-cover *:bg-center *:bg-no-repeat md:max-w-screen-md md:grid-cols-3 md:[grid-template-areas:'a_a_b'_'c_d_d'_'e_e_f']"
   >
-    <!-- 소개 카드 -->
+    <!-- About Me -->
     <div
       class="first group relative col-span-1 overflow-hidden rounded-3xl border [grid-area:a]"
     >
@@ -74,7 +74,7 @@ if (latestPost) {
       </div>
     </div>
 
-    <!-- Discord 활동 -->
+    <!-- Discord Activity -->
     <div
       class="group relative overflow-hidden rounded-3xl border [grid-area:b]"
     >
@@ -82,7 +82,7 @@ if (latestPost) {
       <DiscordPresence client:load />
     </div>
 
-    <!-- Wakatime 그래프 -->
+    <!-- Wakatime Graph -->
     <div
       class="group relative aspect-square max-h-[220px] w-full rounded-3xl border [grid-area:c]"
     >
@@ -90,7 +90,7 @@ if (latestPost) {
       <WakatimeGraph client:load />
     </div>
 
-    <!-- Github 캘린더 -->
+    <!-- Github Calendar -->
     <div
       class="group relative overflow-hidden rounded-3xl border p-4 [grid-area:d]"
     >
@@ -98,7 +98,7 @@ if (latestPost) {
       <GithubCalendar client:load />
     </div>
 
-    <!-- 최신 블로그 포스트 -->
+    <!-- Recent Post -->
     <div
       class="group relative hidden overflow-hidden rounded-3xl border [grid-area:e] md:block"
     >
@@ -177,7 +177,7 @@ if (latestPost) {
       }
     </div>
 
-    <!-- Spotify 상태 -->
+    <!-- Spotify Activity -->
     <div
       class="group relative hidden overflow-hidden rounded-3xl border [grid-area:f] md:block"
     >
