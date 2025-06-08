@@ -178,10 +178,6 @@ export async function hasSubposts(postId: string): Promise<boolean> {
   return subposts.length > 0
 }
 
-//TODO: ToC에는 SubPost를 표시하지는 않지만, 오른쪽 사이드바에는 어떤 SubPost가 있는지 표시할 수 있도록 수정.
-//TODO: 또한 SubPost도 Blog 페이지에 표시되도록 수정.
-//TODO: SubPost 기준은 `[CATEGORY]/[SUBPOST]/ID` 형식일때만 true로 판단 (ex: `writeup/exampleCTF/2025 Quals`일
-//TODO: 때 true이며, 오른쪽에는 exampleCTF 아래의 모든 Post를 오른쪽 사이드바에 표시.)
 export function isSubpost(postId: string): boolean {
   return postId.split('/').length > 2
 }
