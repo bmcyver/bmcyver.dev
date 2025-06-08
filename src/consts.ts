@@ -13,13 +13,16 @@ export const SITE: Site = {
   author: 'bmcyver',
   locale: 'ko-KR',
   postsPerPage: 5,
-  featuredPostCount: 3, // will be removed
 }
 
 export const NAV_LINKS: SocialLink[] = [
   {
     href: '/blog',
     label: 'blog',
+  },
+  {
+    href: '/tags',
+    label: 'tags',
   },
   {
     href: '/about',
