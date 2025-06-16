@@ -21,11 +21,11 @@
     "@astrojs/sitemap": "^3.4.1",
     "@expressive-code/plugin-collapsible-sections": "^0.40.2",
     "@expressive-code/plugin-line-numbers": "^0.40.2",
-    "@iconify-json/lucide": "^1.2.46",
-    "@tailwindcss/vite": "^4.1.8",
+    "@iconify-json/lucide": "^1.2.49",
+    "@tailwindcss/vite": "^4.1.10",
     "@types/react": "19.0.0",
     "@types/react-dom": "19.0.0",
-    "astro": "^5.9.0",
+    "astro": "^5.9.3",
     "astro-expressive-code": "^0.40.2",
     "astro-icon": "^1.1.5",
     "class-variance-authority": "^0.7.1",
@@ -46,8 +46,8 @@
     "remark-math": "^6.0.0",
     "sharp": "^0.34.2",
     "swr": "^2.3.3",
-    "tailwind-merge": "^3.3.0",
-    "tailwindcss": "^4.1.8",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3"
   },
   "devDependencies": {
@@ -73,5 +73,5 @@
       }
     ]
   },
-  "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677"
+  "packageManager": "pnpm@10.12.1+sha512.f0dda8580f0ee9481c5c79a1d927b9164f2c478e90992ad268bbb2465a736984391d6333d2c327913578b2804af33474ca554ba29c04a8b13060a717675ae3ac"
 }
