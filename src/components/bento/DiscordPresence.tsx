@@ -132,7 +132,7 @@ const ActivityDisplay = ({
               alt="Now Playing"
               width={20}
               height={20}
-              className="md:width-[16px] md:height-[16px] absolute -right-1 -bottom-1 rounded-full border-2 md:-right-[2px] md:-bottom-[2px] md:border-[1.5px]"
+              className="md:width-[16px] md:height-[16px] absolute -right-1 -bottom-1 rounded-full border-2 md:-right-[2px] md:-bottom-[2px] md:border-[1px]"
             />
           )}
         </div>
