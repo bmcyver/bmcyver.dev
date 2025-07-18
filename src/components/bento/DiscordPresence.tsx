@@ -97,65 +97,65 @@ const ActivityDisplay = ({
   const elapsedTime = useElapsedTime(activity.timestamps?.start)
 
   return (
-    <div className="flex w-full flex-col gap-y-1 overflow-hidden">
-      {activity.name && (
-        <div className="text-muted-foreground w-full truncate text-[9px] leading-tight font-semibold md:text-[9px]">
-          {(() => {
-            switch (activity.type) {
-              case 0:
-                return `Playing ${activity.name}`
-              case 1:
-                return `Streaming ${activity.name}`
-              case 2:
-                return `Listening to ${activity.name}`
-              case 3:
-                return `Watching ${activity.name}`
-              case 4:
-                return `Competing in ${activity.name}`
-              default:
-                return activity.name
-            }
-          })()}
+    <div className="flex w-full flex-col gap-y-2 overflow-hidden">
+  {activity.name && (
+    <div className="text-muted-foreground w-full truncate text-[10px] leading-tight font-medium md:text-[9px] opacity-70">
+      {(() => {
+        switch (activity.type) {
+          case 0:
+            return `Playing ${activity.name}`
+          case 1:
+            return `Streaming ${activity.name}`
+          case 2:
+            return `Listening to ${activity.name}`
+          case 3:
+            return `Watching ${activity.name}`
+          case 4:
+            return `Competing in ${activity.name}`
+          default:
+            return activity.name
+        }
+      })()}
+    </div>
+  )}
+
+      <div className="flex w-full items-start gap-x-3 md:gap-x-2.5 pt-1">
+    <div
+      className="relative aspect-square w-12 h-12 md:w-10 md:h-10 flex-shrink-0 rounded-lg bg-cover bg-center bg-no-repeat -mt-2"
+      style={{
+        backgroundImage: `url('${getActivityImageUrl(activity, 'large_image')}')`,
+      }}
+    >
+      {activity.assets?.small_image && (
+        <img
+          src={getActivityImageUrl(activity, 'small_image')}
+          alt="Now Playing"
+          width={20}
+          height={20}
+          className="md:width-[16px] md:height-[16px] absolute -right-1 -bottom-1 rounded-full shadow-sm md:-right-[2px] md:-bottom-[2px] "
+        />
+      )}
+    </div>
+
+    <div className="flex min-w-0 flex-1 flex-col gap-y-0.5 overflow-hidden">
+      <div className="text-primary truncate text-[13px] leading-tight font-medium md:text-[12px]">
+        {activity.details || activity.name || 'Unknown Activity'}
+      </div>
+      
+      {activity.state && (
+        <div className="text-muted-foreground truncate text-[11px] leading-tight md:text-[10px] opacity-75">
+          {activity.state}
         </div>
       )}
-
-      <div className="flex w-full items-start gap-x-3 md:gap-x-2">
-        <div
-          className="relative aspect-square h-full w-auto flex-shrink-0 rounded-md bg-contain"
-          style={{
-            backgroundImage: `url('${getActivityImageUrl(activity, 'large_image')}')`,
-          }}
-        >
-          {activity.assets?.small_image && (
-            <img
-              src={getActivityImageUrl(activity, 'small_image')}
-              alt="Now Playing"
-              width={20}
-              height={20}
-              className="md:width-[16px] md:height-[16px] absolute -right-1 -bottom-1 rounded-full border-2 md:-right-[2px] md:-bottom-[2px] md:border-[1px]"
-            />
-          )}
+      
+      {elapsedTime && (
+        <div className="text-muted-foreground truncate text-[10px] leading-tight md:text-[9px] opacity-60 font-mono">
+          {elapsedTime}
         </div>
-
-        <div className="text-muted-foreground flex min-w-0 flex-1 flex-col gap-y-1 overflow-hidden">
-          {activity.details && (
-            <div className="text-primary truncate text-[12px] leading-snug md:text-[11px]">
-              {activity.details}
-            </div>
-          )}
-          {activity.state && (
-            <div className="truncate text-[10px] leading-none whitespace-nowrap md:text-[9px]">
-              {activity.state}
-            </div>
-          )}
-          {elapsedTime && (
-            <div className="truncate text-[11px] leading-none whitespace-nowrap md:text-[9px]">
-              {elapsedTime}
-            </div>
-          )}
-        </div>
-      </div>
+      )}
     </div>
+  </div>
+</div>
   )
 }
 
