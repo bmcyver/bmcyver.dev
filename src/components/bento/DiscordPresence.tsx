@@ -98,64 +98,64 @@ const ActivityDisplay = ({
 
   return (
     <div className="flex w-full flex-col gap-y-2 overflow-hidden">
-  {activity.name && (
-    <div className="text-muted-foreground w-full truncate text-[10px] leading-tight font-medium md:text-[9px] opacity-70">
-      {(() => {
-        switch (activity.type) {
-          case 0:
-            return `Playing ${activity.name}`
-          case 1:
-            return `Streaming ${activity.name}`
-          case 2:
-            return `Listening to ${activity.name}`
-          case 3:
-            return `Watching ${activity.name}`
-          case 4:
-            return `Competing in ${activity.name}`
-          default:
-            return activity.name
-        }
-      })()}
-    </div>
-  )}
-
-      <div className="flex w-full items-start gap-x-3 md:gap-x-2.5 pt-1">
-    <div
-      className="relative aspect-square w-12 h-12 md:w-10 md:h-10 flex-shrink-0 rounded-lg bg-cover bg-center bg-no-repeat -mt-2"
-      style={{
-        backgroundImage: `url('${getActivityImageUrl(activity, 'large_image')}')`,
-      }}
-    >
-      {activity.assets?.small_image && (
-        <img
-          src={getActivityImageUrl(activity, 'small_image')}
-          alt="Now Playing"
-          width={20}
-          height={20}
-          className="md:width-[16px] md:height-[16px] absolute -right-1 -bottom-1 rounded-full shadow-sm md:-right-[2px] md:-bottom-[2px] "
-        />
+      {activity.name && (
+        <div className="text-muted-foreground w-full truncate text-[10px] leading-tight font-medium opacity-70 md:text-[9px]">
+          {(() => {
+            switch (activity.type) {
+              case 0:
+                return `Playing ${activity.name}`
+              case 1:
+                return `Streaming ${activity.name}`
+              case 2:
+                return `Listening to ${activity.name}`
+              case 3:
+                return `Watching ${activity.name}`
+              case 4:
+                return `Competing in ${activity.name}`
+              default:
+                return activity.name
+            }
+          })()}
+        </div>
       )}
-    </div>
 
-    <div className="flex min-w-0 flex-1 flex-col gap-y-0.5 overflow-hidden">
-      <div className="text-primary truncate text-[13px] leading-tight font-medium md:text-[12px]">
-        {activity.details || activity.name || 'Unknown Activity'}
+      <div className="flex w-full items-start gap-x-3 pt-1 md:gap-x-2.5">
+        <div
+          className="relative -mt-2 aspect-square h-12 w-12 flex-shrink-0 rounded-lg bg-cover bg-center bg-no-repeat md:h-10 md:w-10"
+          style={{
+            backgroundImage: `url('${getActivityImageUrl(activity, 'large_image')}')`,
+          }}
+        >
+          {activity.assets?.small_image && (
+            <img
+              src={getActivityImageUrl(activity, 'small_image')}
+              alt="Now Playing"
+              width={20}
+              height={20}
+              className="md:width-[16px] md:height-[16px] absolute -right-1 -bottom-1 rounded-full shadow-sm md:-right-[2px] md:-bottom-[2px]"
+            />
+          )}
+        </div>
+
+        <div className="flex min-w-0 flex-1 flex-col gap-y-0.5 overflow-hidden">
+          <div className="text-primary truncate text-[13px] leading-tight font-medium md:text-[12px]">
+            {activity.details || activity.name || 'Unknown Activity'}
+          </div>
+
+          {activity.state && (
+            <div className="text-muted-foreground truncate text-[11px] leading-tight opacity-75 md:text-[10px]">
+              {activity.state}
+            </div>
+          )}
+
+          {elapsedTime && (
+            <div className="text-muted-foreground truncate font-mono text-[10px] leading-tight opacity-60 md:text-[9px]">
+              {elapsedTime}
+            </div>
+          )}
+        </div>
       </div>
-      
-      {activity.state && (
-        <div className="text-muted-foreground truncate text-[11px] leading-tight md:text-[10px] opacity-75">
-          {activity.state}
-        </div>
-      )}
-      
-      {elapsedTime && (
-        <div className="text-muted-foreground truncate text-[10px] leading-tight md:text-[9px] opacity-60 font-mono">
-          {elapsedTime}
-        </div>
-      )}
     </div>
-  </div>
-</div>
   )
 }
 
