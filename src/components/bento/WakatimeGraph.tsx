@@ -1,6 +1,6 @@
 'use client'
 
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from 'recharts'
+import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis, ResponsiveContainer } from 'recharts'
 import {
   type ChartConfig,
   ChartContainer,
@@ -26,6 +26,7 @@ import {
   SiSharp,
   SiTypescript,
   SiYaml,
+  SiPhp
 } from 'react-icons/si'
 import { type IconType } from 'react-icons/lib'
 import { useWakatime } from '@/lib/swr'
@@ -71,6 +72,7 @@ const languageIcons: { [key: string]: IconType } = {
   'git config': SiGit,
   'git attributes': SiGit,
   'Git Revision List': SiGit,
+  'php': SiPhp,
 }
 
 const colors = [
@@ -101,21 +103,15 @@ const chartConfig = {
 } satisfies ChartConfig
 
 const WakatimeGraph = () => {
-  const {
-    data: languages,
-    isLoading,
-    error,
-  } = useWakatime(BENTO.WAKATIME_SHARE_KEY, colors)
+  const { data: languages, isLoading, error } = useWakatime(BENTO.WAKATIME_SHARE_KEY, colors)
+  const processed = (languages || []).slice(0, 8)
 
   const CustomYAxisTick = ({ x, y, payload }: any) => {
     return (
       <g transform={`translate(${x},${y})`}>
         <title>{payload.value}</title>
         <foreignObject width={16} height={16} x={-26} y={-8}>
-          <div
-            className="flex items-center justify-center"
-            title={payload.value}
-          >
+          <div className="flex items-center justify-center" title={payload.value}>
             {getLanguageIcon(payload.value.toLowerCase())}
           </div>
         </foreignObject>
@@ -140,16 +136,24 @@ const WakatimeGraph = () => {
       </div>
     )
 
+  if (!isLoading && !error && processed.length === 0) {
+    return (
+      <div className="flex h-full w-full items-center justify-center text-xs text-muted-foreground">
+        No WakaTime data
+      </div>
+    )
+  }
+
   return (
     <ChartContainer
       config={chartConfig}
-      className="flex h-full w-full flex-col items-center justify-center"
+      className="h-full w-full"
     >
       <BarChart
         accessibilityLayer
         data={languages}
         layout="vertical"
-        margin={{ left: -5, right: 20, top: 5, bottom: 5 }}
+        margin={{ left: -5, right: 40 , top: 5, bottom: 5 }}
         width={500}
         height={300}
         barSize={18}
@@ -179,5 +183,6 @@ const WakatimeGraph = () => {
     </ChartContainer>
   )
 }
+
 
 export default WakatimeGraph

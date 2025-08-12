@@ -73,8 +73,14 @@ const GithubCalendar: FunctionComponent<
 
   return (
     <div className="flex h-full w-full items-center justify-center">
+      <span className="sr-only">
+        GitHub commit activity graph. Desktop shows last 133 days, mobile shows last 60 days.
+      </span>
       {/* desktop */}
-      <div className="hidden w-full md:flex md:justify-center">
+      <div
+        className="hidden w-full md:flex md:justify-center"
+        aria-label="Recent GitHub commit activity (133 days)"
+      >
         <Calendar
           data={selectLastNDays(data.contributions, 133)}
           theme={CALENDAR_THEME}
@@ -85,11 +91,14 @@ const GithubCalendar: FunctionComponent<
         />
       </div>
       {/* mobile */}
-      <div className="flex w-full justify-center md:hidden">
+      <div
+        className="flex w-full justify-center md:hidden"
+        aria-label="Recent GitHub commit activity (60 days)"
+      >
         <Calendar
           data={selectLastNDays(data.contributions, 60)}
           theme={CALENDAR_THEME}
-          blockSize={18}
+          blockSize={16}
           {...CALENDAR_CONFIG}
           {...props}
         />

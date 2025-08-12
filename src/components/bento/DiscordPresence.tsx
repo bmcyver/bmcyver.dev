@@ -76,6 +76,8 @@ const StatusIndicator = ({
           status === 'offline',
       },
     )}
+    role="status"
+    aria-label={`Discord status: ${status}`}
   >
     <div
       className={cn(
@@ -86,6 +88,7 @@ const StatusIndicator = ({
         status === 'offline' && 'size-2 rounded-full md:size-[6px]',
       )}
     />
+    <span className="sr-only">{status}</span>
   </div>
 )
 
@@ -121,15 +124,21 @@ const ActivityDisplay = ({
 
       <div className="flex w-full items-start gap-x-3 pt-1 md:gap-x-2.5">
         <div
-          className="relative -mt-2 aspect-square h-12 w-12 flex-shrink-0 rounded-lg bg-cover bg-center bg-no-repeat md:h-10 md:w-10"
+          className={cn(
+            "relative -mt-2 aspect-square h-12 w-12 flex-shrink-0 rounded-lg bg-cover bg-center bg-no-repeat md:h-10 md:w-10",
+            !activity.assets?.large_image && "bg-secondary/40"
+          )}
           style={{
-            backgroundImage: `url('${getActivityImageUrl(activity, 'large_image')}')`,
+            backgroundImage: activity.assets?.large_image
+              ? `url('${getActivityImageUrl(activity, 'large_image')}')`
+              : 'none',
           }}
+          aria-label={activity.name ? `${activity.name} image` : 'Activity image'}
         >
           {activity.assets?.small_image && (
             <img
               src={getActivityImageUrl(activity, 'small_image')}
-              alt="Now Playing"
+              alt={`${activity.name || 'Activity'} icon`}
               width={20}
               height={20}
               className="md:width-[16px] md:height-[16px] absolute -right-1 -bottom-1 rounded-full shadow-sm md:-right-[2px] md:-bottom-[2px]"
@@ -164,7 +173,7 @@ const DiscordPresence = () => {
 
   if (isLoading) {
     return (
-      <div className="relative overflow-hidden md:aspect-square">
+      <div className="relative overflow-hidden md:aspect-square" aria-label="Loading Discord status">
         <div className="grid size-full grid-rows-4">
           <Skeleton className="bg-secondary/50" />
           <div className="row-span-3 flex flex-col gap-3 p-3 md:gap-2 md:p-2">
@@ -188,10 +197,10 @@ const DiscordPresence = () => {
   )
 
   return (
-    <div className="relative overflow-hidden md:aspect-square">
+    <div className="relative overflow-hidden md:aspect-square" aria-label="Current Discord status">
       <div className="grid size-full grid-rows-4">
         <div className="bg-secondary/50"></div>
-        <div className="row-span-3 flex flex-col gap-3 p-3 md:gap-2 md:p-2">
+        <div className="row-span-3 flex flex-col gap-2.5 p-3 md:gap-2 md:p-2">
           <div className="flex justify-between gap-x-1">
             <div className="relative">
               <AvatarComponent
@@ -204,14 +213,14 @@ const DiscordPresence = () => {
             </div>
           </div>
 
-          <div className="bg-secondary/50 flex flex-col gap-y-1 rounded-xl p-3 md:gap-y-0.5 md:p-2">
+          <div className="bg-secondary/50 flex flex-col gap-y-1 rounded-xl p-2.5 md:p-2">
             <span className="text-base leading-none md:text-sm">bmcyver</span>
             <span className="text-muted-foreground text-xs leading-none md:text-[10px]">
               @bmcyver
             </span>
           </div>
 
-          <div className="bg-secondary/50 flex grow rounded-xl px-3 py-2 md:px-2 md:py-1.5">
+          <div className="bg-secondary/50 flex grow rounded-xl px-2.5 py-2 md:px-2 md:py-1.5">
             {activeActivity ? (
               <ActivityDisplay activity={activeActivity} />
             ) : (

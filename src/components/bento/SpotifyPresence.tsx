@@ -12,7 +12,12 @@ const SpotifyPresence = () => {
 
   if (isLoading || !lanyard) {
     return (
-      <div className="relative flex h-full w-full flex-col justify-between rounded-3xl p-5">
+      <div
+        className="relative flex h-full w-full flex-col justify-between rounded-3xl p-5"
+        aria-label="Loading Spotify status"
+        aria-busy="true"
+        aria-live="polite"
+      >
         <Skeleton className="mb-1 h-[65%] w-[55%] rounded-xl" />
         <div className="flex min-w-0 flex-1 flex-col justify-end overflow-hidden">
           <div className="flex flex-col gap-2">
@@ -30,7 +35,11 @@ const SpotifyPresence = () => {
 
   if (!lanyard.data.spotify) {
     return (
-      <div className="relative flex h-full w-full flex-col justify-between rounded-3xl p-5">
+      <div
+        className="relative flex h-full w-full flex-col justify-between rounded-3xl p-5"
+        aria-label="Not listening"
+        aria-live="polite"
+      >
         <Skeleton className="mb-1 h-[65%] w-[55%] rounded-xl" />
         <div className="flex min-w-0 flex-1 flex-col justify-end overflow-hidden">
           <div className="flex flex-col gap-2">
@@ -52,13 +61,19 @@ const SpotifyPresence = () => {
 
   return (
     <>
-      <div className="relative flex h-full w-full flex-col justify-between p-5">
+      <div
+        className="relative flex h-full w-full flex-col justify-between p-5"
+        aria-label={`Current track: ${song} - ${artist}`}
+        aria-live="polite"
+      >
         <img
           src={album_art_url}
-          alt="Album art"
+          alt={`${song} album art`}
           width={100}
           height={100}
-          className="border-border mb-1 w-[55%] rounded-xl border"
+          className="border-border mb-1 w-[55%] rounded-xl border shadow-sm"
+          loading="lazy"
+          decoding="async"
         />
         <div className="flex min-w-0 flex-1 flex-col justify-end overflow-hidden">
           <div className="flex flex-col">
@@ -66,10 +81,7 @@ const SpotifyPresence = () => {
               {song}
             </span>
             <span className="text-muted-foreground w-[85%] truncate text-xs">
-              by{' '}
-              <span className="text-secondary-foreground font-semibold">
-                {artist}
-              </span>
+              by <span className="text-secondary-foreground font-semibold">{artist}</span>
             </span>
           </div>
         </div>
