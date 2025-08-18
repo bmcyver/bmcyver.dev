@@ -125,15 +125,17 @@ const ActivityDisplay = ({
       <div className="flex w-full items-start gap-x-3 pt-1 md:gap-x-2.5">
         <div
           className={cn(
-            "relative -mt-2 aspect-square h-12 w-12 flex-shrink-0 rounded-lg bg-cover bg-center bg-no-repeat md:h-10 md:w-10",
-            !activity.assets?.large_image && "bg-secondary/40"
+            'relative -mt-2 aspect-square h-12 w-12 flex-shrink-0 rounded-lg bg-cover bg-center bg-no-repeat md:h-10 md:w-10',
+            !activity.assets?.large_image && 'bg-secondary/40',
           )}
           style={{
             backgroundImage: activity.assets?.large_image
               ? `url('${getActivityImageUrl(activity, 'large_image')}')`
               : 'none',
           }}
-          aria-label={activity.name ? `${activity.name} image` : 'Activity image'}
+          aria-label={
+            activity.name ? `${activity.name} image` : 'Activity image'
+          }
         >
           {activity.assets?.small_image && (
             <img
@@ -173,7 +175,10 @@ const DiscordPresence = () => {
 
   if (isLoading) {
     return (
-      <div className="relative overflow-hidden md:aspect-square" aria-label="Loading Discord status">
+      <div
+        className="relative overflow-hidden md:aspect-square"
+        aria-label="Loading Discord status"
+      >
         <div className="grid size-full grid-rows-4">
           <Skeleton className="bg-secondary/50" />
           <div className="row-span-3 flex flex-col gap-3 p-3 md:gap-2 md:p-2">
@@ -197,7 +202,10 @@ const DiscordPresence = () => {
   )
 
   return (
-    <div className="relative overflow-hidden md:aspect-square" aria-label="Current Discord status">
+    <div
+      className="relative overflow-hidden md:aspect-square"
+      aria-label="Current Discord status"
+    >
       <div className="grid size-full grid-rows-4">
         <div className="bg-secondary/50"></div>
         <div className="row-span-3 flex flex-col gap-2.5 p-3 md:gap-2 md:p-2">

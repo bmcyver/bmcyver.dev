@@ -7,6 +7,21 @@ import Layout from '@/layouts/Layout.astro'
 // import { getAllProjects } from '@/lib/data-utils'
 
 // const projects = await getAllProjects()
+
+const awards = [
+  {
+    year: 2025,
+    place: '1st',
+    team: '._.',
+    event: 'YISF',
+  },
+  {
+    year: 2024,
+    place: '3rd',
+    team: '상은 제비뽑기로 정하시는건',
+    event: 'WaRP CTF',
+  },
+]
 ---
 
 <Layout class="max-w-3xl">
@@ -26,20 +41,28 @@ import Layout from '@/layouts/Layout.astro'
             ><a href="https://deadsec.team" class="hover:underline">DeadSec</a
             ></strong
           >
-          <!--and competing in Korean CTFs with the <strong
-            >미스크올솔로교통비쟁취</strong
-            >-->.
         </p>
         <p>
           I also enjoy playing <strong>Genshin Impact</strong> in my free time.
         </p>
 
-        <!-- <h3>Awards</h3>
-        <ul>
-          <li>
-            - 1<sup>st</sup> place as (team) in <a href="">(CTF)</a>
-          </li>
-        </ul> -->
+        <h3>Awards</h3>
+        <div class="not-prose overflow-x-auto">
+          <table class="w-full text-sm">
+            <tbody>
+              {
+                awards.map((award) => (
+                  <tr>
+                    <td class="px-3 py-0.5">{award.year}</td>
+                    <td class="px-3 py-0.5 font-medium">{award.place}</td>
+                    <td class="px-3 py-0.5">{award.team}</td>
+                    <td class="px-3 py-0.5">{award.event}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
 
         <!-- <h2 class="mb-4 text-2xl font-medium">Example Projects Listing</h2>
       <div class="flex flex-col gap-4">
@@ -49,3 +72,8 @@ import Layout from '@/layouts/Layout.astro'
     </div>
   </section>
 </Layout>
+
+<!-- <h2 class="mb-4 text-2xl font-medium">Example Projects Listing</h2>
+      <div class="flex flex-col gap-4">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div> -->

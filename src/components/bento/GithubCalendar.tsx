@@ -74,7 +74,8 @@ const GithubCalendar: FunctionComponent<
   return (
     <div className="flex h-full w-full items-center justify-center">
       <span className="sr-only">
-        GitHub commit activity graph. Desktop shows last 133 days, mobile shows last 60 days.
+        GitHub commit activity graph. Desktop shows last 133 days, mobile shows
+        last 60 days.
       </span>
       {/* desktop */}
       <div

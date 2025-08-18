@@ -93,6 +93,12 @@
       @apply [&>span[data-line='']>*]:text-(--shiki-light) dark:[&>span[data-line='']>*]:text-(--shiki-dark);
     }
 
+    :where(.expressive-code code):not(
+      :where([class~='not-prose'], [class~='not-prose'] *)
+    ) {
+      @apply pt-0!;
+    }
+
     :where(blockquote):not(
       :where([class~='not-prose'], [class~='not-prose'] *)
     ) {

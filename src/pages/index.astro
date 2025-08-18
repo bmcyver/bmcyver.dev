@@ -7,7 +7,6 @@ import Link from '@/components/Link.astro'
 import TreeBackground from '@/components/TreeBackground.astro'
 import AvatarComponent from '@/components/ui/avatar'
 import { badgeVariants } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
 import Layout from '@/layouts/Layout.astro'
 import { getCombinedReadingTime, parseAuthors } from '@/lib/data-utils'
 import { formatDate } from '@/lib/utils'
@@ -32,15 +31,13 @@ if (latestPost) {
   authors = await parseAuthors(latestPost.data.authors ?? [])
 }
 ---
+
 <Layout class="max-w-3xl">
   <section
     aria-label="Personal dashboard"
     aria-labelledby="dashboard-heading"
     role="list"
-    class="mx-auto grid max-w-[375px] grid-cols-1 gap-4 px-4
-      [grid-template-areas:'a'_'b'_'c'_'d'_'e']
-      *:rounded-3xl *:bg-cover *:bg-center *:bg-no-repeat
-      md:max-w-screen-md md:grid-cols-3 md:[grid-template-areas:'a_a_b'_'c_d_d'_'e_e_f']"
+    class="mx-auto grid max-w-[375px] grid-cols-1 gap-4 px-4 [grid-template-areas:'a'_'b'_'c'_'d'_'e'] *:rounded-3xl *:bg-cover *:bg-center *:bg-no-repeat md:max-w-screen-md md:grid-cols-3 md:[grid-template-areas:'a_a_b'_'c_d_d'_'e_e_f']"
   >
     <!-- About Me -->
     <div
@@ -63,9 +60,6 @@ if (latestPost) {
           <a href="https://deadsec.team" class="font-semibold hover:underline"
             >DeadSec</a
           >
-          <!-- and competing in Korean CTFs with the <strong
-            >미스크올솔로교통비쟁취</strong
-          > -->.
         </p>
         <p class="mb-2">
           I also enjoy playing <strong>Genshin Impact</strong> in my free time.
@@ -122,26 +116,24 @@ if (latestPost) {
       {
         latestPost && (
           <div class="relative z-10 flex h-full flex-col p-5 md:p-6">
-            <div class="flex flex-col gap-3 grow">
+            <div class="flex grow flex-col gap-3">
               <div class="relative">
-                <!-- 제목 자체를 링크로 변경 -->
                 <a
                   href={`/blog/${latestPost.id}`}
                   aria-label={`Read full post: ${latestPost.data.title}`}
-                  class="group/title inline-block rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  class="group/title focus-visible:ring-primary inline-block rounded-sm hover:underline focus:outline-none focus-visible:ring-2"
                 >
-                  <h4 class="text-lg md:text-xl font-semibold leading-snug transition-colors line-clamp-2 group-hover:text-primary group/title:hover:text-primary">
+                  <h4 class="group-hover:text-primary group/title:hover:text-primary line-clamp-2 text-lg leading-snug font-semibold transition-colors md:text-xl">
                     {latestPost.data.title}
                   </h4>
                 </a>
-                <!-- 기존 stretched-link 앵커 제거 -->
               </div>
 
               <p class="text-muted-foreground line-clamp-3 min-h-[3.4em] text-sm">
                 {latestPost.data.description}
               </p>
 
-              <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+              <div class="text-muted-foreground flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
                 {authors && authors.length > 0 && (
                   <>
                     {authors.map((author) => (
@@ -153,25 +145,32 @@ if (latestPost) {
                           fallback={author.name[0]}
                           className="size-4 rounded-full"
                         />
-                        <span class="truncate max-w-[90px]">{author.name}</span>
+                        <span class="max-w-[90px] truncate">{author.name}</span>
                       </span>
                     ))}
-                    <span aria-hidden="true" class="opacity-60">·</span>
+                    <span aria-hidden="true" class="opacity-60">
+                      ·
+                    </span>
                   </>
                 )}
                 <span class="truncate">{formattedDate}</span>
-                <span aria-hidden="true" class="opacity-60">·</span>
+                <span aria-hidden="true" class="opacity-60">
+                  ·
+                </span>
                 <span class="truncate">{readTime}</span>
               </div>
 
-              <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mt-auto">
+              <div class="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div class="flex flex-wrap gap-2">
                   {latestPost.data.tags && (
                     <>
-                      {latestPost.data.tags.slice(0, 3).map((tag) => (
+                      {latestPost.data.tags.slice(0, 3).map((tag: string) => (
                         <a
                           href={`/tags/${tag}`}
-                          class={badgeVariants({ variant: 'secondary' }) + ' flex items-center gap-1 px-2 py-0.5 text-xs'}
+                          class={
+                            badgeVariants({ variant: 'secondary' }) +
+                            ' flex items-center gap-1 px-2 py-0.5 text-xs'
+                          }
                         >
                           <Icon name="lucide:hash" class="size-3" />
                           {tag}
@@ -187,7 +186,7 @@ if (latestPost) {
                 </div>
                 <Link
                   href={`/blog/${latestPost.id}`}
-                  class="hidden md:inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                  class="text-primary hidden items-center gap-1 text-sm font-medium hover:underline md:inline-flex"
                 >
                   Read more
                   <Icon name="lucide:arrow-right" class="size-3.5" />
@@ -203,7 +202,7 @@ if (latestPost) {
     <div
       role="listitem"
       aria-label="Current Spotify track"
-      class="card-base group relative overflow-hidden border [grid-area:f] hidden md:block"
+      class="card-base group relative hidden overflow-hidden border [grid-area:f] md:block"
     >
       <TreeBackground size="sm" density="low" />
       <SpotifyPresence client:load />

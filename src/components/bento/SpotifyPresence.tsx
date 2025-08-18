@@ -81,7 +81,10 @@ const SpotifyPresence = () => {
               {song}
             </span>
             <span className="text-muted-foreground w-[85%] truncate text-xs">
-              by <span className="text-secondary-foreground font-semibold">{artist}</span>
+              by{' '}
+              <span className="text-secondary-foreground font-semibold">
+                {artist}
+              </span>
             </span>
           </div>
         </div>

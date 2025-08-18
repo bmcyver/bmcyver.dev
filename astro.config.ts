@@ -16,6 +16,7 @@ import rehypeDocument from 'rehype-document'
 
 import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-sections'
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
+import { pluginFileIcons } from '@xt0rted/expressive-code-file-icons'
 
 import tailwindcss from '@tailwindcss/vite'
 
@@ -24,7 +25,14 @@ export default defineConfig({
   integrations: [
     expressiveCode({
       themes: ['github-light', 'github-dark'],
-      plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
+      plugins: [
+        pluginCollapsibleSections(),
+        pluginLineNumbers(),
+        pluginFileIcons({
+          iconClass: 'text-4 w-5 inline mr-1 mb-1',
+          titleClass: '',
+        }),
+      ],
       useDarkModeMediaQuery: false,
       themeCssSelector: (theme) => `[data-theme="${theme.name.split('-')[1]}"]`,
       defaultProps: {
