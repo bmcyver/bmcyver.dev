@@ -22,7 +22,7 @@ import Callout from "@/components/Callout.astro"
 
 꽤 재미있었던 문제다. 단순한 `XSS`지만 컨테이너의 아웃바운드 네트워크가 **UDP만 허용**되는 제약이있다.  
 이 때문에 두 가지 방법을 생각할 수 있다. <br/>
-1) **DNS exfiltration** (DNS는 UDP 기반)  
+1) **DNS data exfiltration** (DNS는 UDP 기반)  
 2) `WebRTC`의 UDP 전송 활용
 
 나는 1번을 택했다.
@@ -132,7 +132,7 @@ def forbidden_error(error):
 
 위 HTML 템플릿은 `/admin/mailbox/<msg_id>` 렌더링에 사용된다. <br/>
 `{{ item.message }}`라면 자동으로 이스케이프가 되지만 `{{ item.message|safe }}`로 `safe` 필터를 적용하면 **이스케이프가 비활성화**되므로 XSS가 발생한다. 
-네트워크 아웃바운드가 UDP만 가능하니 **DNS exfiltration XSS**를 해야한다.
+네트워크 아웃바운드가 UDP만 가능하니 **DNS data exfiltration XSS**를 해야한다.
 
 `https://webhook.site`를 쓰면 어떤 **DNS 질의가 발생했는지** 확인할 수 있다. <br/>
 
