@@ -12,6 +12,7 @@ import { getCombinedReadingTime, parseAuthors } from '@/lib/data-utils'
 import { formatDate } from '@/lib/utils'
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
+import PageHead from '@/components/PageHead.astro'
 
 const latestPost = await getCollection('blog').then((posts) =>
   posts
@@ -33,6 +34,7 @@ if (latestPost) {
 ---
 
 <Layout class="max-w-3xl">
+  <PageHead slot="head" title="Home" />
   <section
     role="list"
     class="mx-auto grid max-w-[375px] grid-cols-1 gap-4 px-4 [grid-template-areas:'a'_'b'_'c'_'d'_'e'] *:rounded-3xl *:bg-cover *:bg-center *:bg-no-repeat md:max-w-screen-md md:grid-cols-3 md:[grid-template-areas:'a_a_b'_'c_d_d'_'e_e_f']"
