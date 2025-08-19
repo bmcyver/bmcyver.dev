@@ -42,7 +42,6 @@ if (latestPost) {
     <!-- About Me -->
     <div
       role="listitem"
-      aria-label="About me"
       class="card-base group relative col-span-1 overflow-hidden border [grid-area:a]"
     >
       <TreeBackground />
@@ -79,7 +78,6 @@ if (latestPost) {
     <!-- Discord Activity -->
     <div
       role="listitem"
-      aria-label="Discord status"
       class="card-base group relative overflow-hidden border [grid-area:b]"
     >
       <TreeBackground size="sm" />
@@ -89,7 +87,6 @@ if (latestPost) {
     <!-- Wakatime Graph -->
     <div
       role="listitem"
-      aria-label="Wakatime coding time"
       class="card-base group relative aspect-[4/3] max-h-[240px] w-full overflow-hidden border [grid-area:c] md:aspect-square"
     >
       <TreeBackground size="sm" density="low" />
@@ -99,7 +96,6 @@ if (latestPost) {
     <!-- Github Calendar -->
     <div
       role="listitem"
-      aria-label="Recent GitHub activity"
       class="card-base group relative overflow-hidden border p-4 [grid-area:d]"
     >
       <TreeBackground density="medium" />
@@ -109,7 +105,6 @@ if (latestPost) {
     <!-- Recent Post -->
     <div
       role="listitem"
-      aria-label="Latest blog post"
       class="card-base group relative overflow-hidden border [grid-area:e] sm:block"
     >
       <TreeBackground density="medium" />
@@ -120,7 +115,6 @@ if (latestPost) {
               <div class="relative">
                 <a
                   href={`/blog/${latestPost.id}`}
-                  aria-label={`Read full post: ${latestPost.data.title}`}
                   class="group/title focus-visible:ring-primary inline-block rounded-sm hover:underline focus:outline-none focus-visible:ring-2"
                 >
                   <h4 class="group-hover:text-primary group/title:hover:text-primary line-clamp-2 text-lg leading-snug font-semibold transition-colors md:text-xl">
@@ -201,7 +195,6 @@ if (latestPost) {
     <!-- Spotify Activity (모바일 숨김) -->
     <div
       role="listitem"
-      aria-label="Current Spotify track"
       class="card-base group relative hidden overflow-hidden border [grid-area:f] md:block"
     >
       <TreeBackground size="sm" density="low" />
