@@ -42,7 +42,6 @@ const MobileMenu = () => {
           title="Menu"
         >
           <Menu className="size-5" />
-          <span className="sr-only">Toggle menu</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="bg-background">

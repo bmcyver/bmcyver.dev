@@ -88,7 +88,6 @@ const StatusIndicator = ({
         status === 'offline' && 'size-2 rounded-full md:size-[6px]',
       )}
     />
-    <span className="sr-only">{status}</span>
   </div>
 )
 
