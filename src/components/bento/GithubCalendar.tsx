@@ -74,9 +74,7 @@ const GithubCalendar: FunctionComponent<
   return (
     <div className="flex h-full w-full items-center justify-center">
       {/* desktop */}
-      <div
-        className="hidden w-full md:flex md:justify-center"
-      >
+      <div className="hidden w-full md:flex md:justify-center">
         <Calendar
           data={selectLastNDays(data.contributions, 133)}
           theme={CALENDAR_THEME}
@@ -87,9 +85,7 @@ const GithubCalendar: FunctionComponent<
         />
       </div>
       {/* mobile */}
-      <div
-        className="flex w-full justify-center md:hidden"
-      >
+      <div className="flex w-full justify-center md:hidden">
         <Calendar
           data={selectLastNDays(data.contributions, 60)}
           theme={CALENDAR_THEME}

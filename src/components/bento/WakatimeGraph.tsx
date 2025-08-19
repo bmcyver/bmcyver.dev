@@ -7,7 +7,6 @@ import {
   LabelList,
   XAxis,
   YAxis,
-  ResponsiveContainer,
 } from 'recharts'
 import {
   type ChartConfig,

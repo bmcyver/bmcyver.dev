@@ -4,6 +4,7 @@ import GithubCalendar from '@/components/bento/GithubCalendar'
 import SpotifyPresence from '@/components/bento/SpotifyPresence'
 import WakatimeGraph from '@/components/bento/WakatimeGraph'
 import Link from '@/components/Link.astro'
+import PageHead from '@/components/PageHead.astro'
 import TreeBackground from '@/components/TreeBackground.astro'
 import AvatarComponent from '@/components/ui/avatar'
 import { badgeVariants } from '@/components/ui/badge'
@@ -12,7 +13,6 @@ import { getCombinedReadingTime, parseAuthors } from '@/lib/data-utils'
 import { formatDate } from '@/lib/utils'
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
-import PageHead from '@/components/PageHead.astro'
 
 const latestPost = await getCollection('blog').then((posts) =>
   posts
