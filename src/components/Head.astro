@@ -3,26 +3,6 @@ import { SITE } from '@/consts'
 import { ClientRouter } from 'astro:transitions'
 import Favicons from './Favicons.astro'
 
-export interface Props {
-  title?: string
-  description?: string
-  image?: string
-  type?: 'website' | 'article'
-  canonicalURL?: URL | string
-  noindex?: boolean
-}
-
-const {
-  title = SITE.title,
-  description = SITE.description,
-  image = '/static/og-image.png',
-  type = 'website',
-  canonicalURL = new URL(Astro.url.pathname, Astro.site),
-  noindex = false,
-} = Astro.props
-
-const pageTitle = title === SITE.title ? title : `${title} | ${SITE.title}`
-const imageURL = new URL(image, Astro.site)
 ---
 
 <head>
@@ -33,48 +13,11 @@ const imageURL = new URL(image, Astro.site)
     content="width=device-width, initial-scale=1.0, user-scalable=yes"
   />
   <meta name="generator" content={Astro.generator} />
-  <meta
-    name="robots"
-    content={noindex ? 'noindex, nofollow' : 'index, follow'}
-  />
-
-  <!-- Primary Meta Tags -->
-  <title>{pageTitle}</title>
-  <meta name="title" content={pageTitle} />
-  <meta name="description" content={description} />
-  <meta name="author" content={SITE.author} />
-  <link rel="canonical" href={canonicalURL} />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content={type} />
-  <meta property="og:url" content={canonicalURL} />
-  <meta property="og:title" content={pageTitle} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={imageURL} />
-  <meta property="og:image:alt" content={`Cover image for ${title}`} />
-  <meta property="og:site_name" content={SITE.title} />
-  <meta property="og:locale" content="en_US" />
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content={canonicalURL} />
-  <meta property="twitter:title" content={pageTitle} />
-  <meta property="twitter:description" content={description} />
-  <meta property="twitter:image" content={imageURL} />
-
-  <!-- Additional SEO -->
-  <meta
-    name="keywords"
-    content="web security, binary exploitation, CTF, cybersecurity, blog"
-  />
-  <meta name="language" content="English" />
-  <meta name="revisit-after" content="7 days" />
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content={SITE.title} />
   <meta
     name="format-detection"
     content="telephone=no,date=no,address=no,email=no,url=no"
